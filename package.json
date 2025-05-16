@@ -1,7 +1,7 @@
 {
-  "name": "n8n-credential-creator",
+  "name": "n8n-credentials-proxy",
   "version": "1.0.0",
-  "description": "A proxy server to create credentials in n8n via API",
+  "description": "A proxy server to manage credentials for n8n workflows",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -9,9 +9,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "cors": "^2.8.5",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.1"
   },
-  "devDependencies": {},
-  "author": "",
-  "license": "ISC"
+  "author": "your-name",
+  "license": "MIT"
 }
