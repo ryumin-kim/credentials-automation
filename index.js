@@ -34,7 +34,6 @@ app.post('/proxy/credentials/create', async (req, res) => {
 
     const data = await response.json();
 
-    // 크레덴셜이 생성되었으면 성공 메시지 반환
     if (response.ok) {
       res.status(200).json({ message: 'Credential created successfully', data });
     } else {
@@ -45,5 +44,6 @@ app.post('/proxy/credentials/create', async (req, res) => {
   }
 });
 
+// 필요한 다른 엔드포인트도 추가하기
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Credential Creation Proxy running on port ${PORT}`));
