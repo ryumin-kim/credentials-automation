@@ -1,16 +1,14 @@
 {
-  "name": "n8n-credentials-proxy",
+  "name": "n8n-credential-proxy",
   "version": "1.0.0",
-  "description": "A proxy server to manage credentials for n8n workflows",
+  "description": "API Proxy for managing n8n credentials",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
     "cors": "^2.8.5",
-    "node-fetch": "^2.6.1"
-  },
-  "author": "your-name",
-  "license": "MIT"
+    "express": "^4.18.2",
+    "node-fetch": "^2.6.7"
+  }
 }
