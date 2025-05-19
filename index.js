@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 // 🔐 Credential 생성
-app.post('/create-credential', async (req, res) => {
+app.post('/proxy/credentials/create', async (req, res) => {
   const { n8nUrl, apiKey, credential } = req.body;
 
   if (!n8nUrl || !apiKey || !credential) {
