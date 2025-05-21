@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const app = express();
 
@@ -20,7 +21,18 @@ app.post('/proxy/credentials/create', async (req, res) => {
   }
 
   try {
-    const cleanedUrl = n8nUrl.replace(/\/+$/, "");
+    const cleanedUrl = n8nUrl.replace(/\/+\$/, "");
+
+    // ✅ 구글 계열은 서버에서 clientId/clientSecret 주입
+    if (credential.type.toLowerCase().includes('google')) {
+      if (!credential.data.clientId) {
+        credential.data.clientId = process.env.GOOGLE_CLIENT_ID;
+      }
+      if (!credential.data.clientSecret) {
+        credential.data.clientSecret = process.env.GOOGLE_CLIENT_SECRET;
+      }
+    }
+
     const response = await fetch(`${cleanedUrl}/api/v1/credentials`, {
       method: 'POST',
       headers: {
@@ -47,7 +59,7 @@ app.delete('/delete-credential/:id', async (req, res) => {
   }
 
   try {
-    const cleanedUrl = n8nUrl.replace(/\/+$/, "");
+    const cleanedUrl = n8nUrl.replace(/\/+\$/, "");
     const response = await fetch(`${cleanedUrl}/api/v1/credentials/${id}`, {
       method: 'DELETE',
       headers: {
@@ -76,7 +88,7 @@ app.get('/get-schema/:type', async (req, res) => {
   }
 
   try {
-    const cleanedUrl = n8nUrl.replace(/\/+$/, "");
+    const cleanedUrl = n8nUrl.replace(/\/+\$/, "");
     const response = await fetch(`${cleanedUrl}/api/v1/credentials/schema/${type}`, {
       method: 'GET',
       headers: {
